@@ -1,8 +1,11 @@
 // Dependencies
 // =============================================================
 const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 const path = require("path");
 const viewRoutes = require("./routes/view");
+const apiRoutes = require("./routes/api");
 
 // Sets up the Express App
 // =============================================================
@@ -11,6 +14,8 @@ const PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(logger("dev"));
 app.use(express.static("public"));
 app.use("/", viewRoutes);
 // Defaults to homepage if route unknown

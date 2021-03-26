@@ -18,9 +18,15 @@ app.use(express.json());
 app.use(logger("dev"));
 app.use(express.static("public"));
 app.use("/", viewRoutes);
+app.use(apiRoutes);
 // Defaults to homepage if route unknown
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
+});
+mongoose.connect("mongodb://localhost/workout", {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
 });
 
 // Starts the server to begin listening

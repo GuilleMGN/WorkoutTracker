@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { all } = require('../routes/api');
+const mongoose = require("mongoose");
+const { all } = require("../routes/api");
 const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema({
@@ -10,13 +10,16 @@ const workoutSchema = new Schema({
     exercises: [
         {
             type: {
-                type: String
+                type: String,
+                required: "This field is required" 
             },
             name: {
-                type: String
+                type: String,
+                required: "This field is required" 
             },
             duration: {
-                type: Number
+                type: Number,
+                required: "This field is required" 
             },
             weight: {
                 type: Number
@@ -34,6 +37,6 @@ const workoutSchema = new Schema({
     ]
 });
 
-const Workout = mongoose.model('Workout', workoutSchema);
+const Workout = mongoose.model("Workout", workoutSchema);
 
 module.exports = Workout;

@@ -1,5 +1,4 @@
 // Dependencies
-// =============================================================
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -8,7 +7,6 @@ const viewRoutes = require("./routes/view");
 const apiRoutes = require("./routes/api");
 
 // Sets up the Express App
-// =============================================================
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -23,6 +21,8 @@ app.use(apiRoutes);
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
+// Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -30,7 +30,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 // Starts the server to begin listening
-// =============================================================
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });

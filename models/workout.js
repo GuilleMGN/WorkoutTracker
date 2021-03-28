@@ -1,3 +1,4 @@
+// Create collections
 const mongoose = require("mongoose");
 const { all } = require("../routes/api");
 const Schema = mongoose.Schema;
@@ -11,15 +12,15 @@ const workoutSchema = new Schema({
         {
             type: {
                 type: String,
-                required: "This field is required" 
+                required: "This field is required"
             },
             name: {
                 type: String,
-                required: "This field is required" 
+                required: "This field is required"
             },
             duration: {
                 type: Number,
-                required: "This field is required" 
+                required: "This field is required"
             },
             weight: {
                 type: Number
